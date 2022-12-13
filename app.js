@@ -16,14 +16,19 @@ function GroceryListItems(props) {
   );
 }
 
-function BoldItPlease(props) {
-  const { useState } = React;
+const { useState } = React;
+
+const BoldItPlease = (props) => {
   const [isDone, setIsDone] = useState(false);
+  const [isBold, setIsBold] = useState(false);
   const style = {
-    fontWeight: isDone ? 'Bold' : 'normal'
+    fontWeight: isBold ? 'Bold' : 'normal'
   };
+  const style2 = {
+    textDecoration: isDone ? 'line-through' : 'none'
+  }
   return (
-    <li style={style} onMouseEnter={() => setIsDone(!isDone)} onMouseLeave={() => setIsDone(!isDone)}>
+    <li style={{...style, ...style2}} onClick={() => setIsDone(!isDone)} onMouseEnter={() => setIsBold(!isBold)} onMouseLeave={() => setIsBold(!isBold)}>
       {props.item}
     </li>
   )
